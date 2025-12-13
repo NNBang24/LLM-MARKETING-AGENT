@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent: Tạo & Đánh giá Nội dung</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Tạo Nội Dung</a>
+        <a href="analytics.html">Lịch Sử & Thống Kê</a>
+    </div>
+
+    <h1>Trình Tạo Nội Dung Tiếp Thị Bằng AI Agent</h1>
+
+    <div class="content-container">
+        <div class="input-card">
+            <h2>1. Yêu cầu Đầu vào</h2>
+            <form id="content-form">
+                <label for="product">Sản phẩm/Dịch vụ:</label>
+                <input type="text" id="product" value="Phần mềm quản lý dự án AI-Powered" required>
+
+                <label for="audience">Đối tượng Khách hàng:</label>
+                <input type="text" id="audience" value="Quản lý dự án bận rộn" required>
+
+                <label for="goal">Mục tiêu Tiếp thị:</label>
+                <select id="goal" required>
+                    <option value="Tăng nhận thức">Tăng nhận thức</option>
+                    <option value="Kêu gọi dùng thử miễn phí">Kêu gọi dùng thử miễn phí</option>
+                    <option value="Tăng doanh số bán hàng">Tăng doanh số bán hàng</option>
+                </select>
+
+                <label for="tone">Phong cách/Giọng điệu:</label>
+                <input type="text" id="tone" value="Chuyên nghiệp, khẩn cấp">
+                
+                <button type="submit" id="generate-button">Tạo Nội Dung 🚀</button>
+                <p id="loading-status" style="margin-top: 10px; color: #e67e22; font-weight: bold;"></p>
+            </form>
+        </div>
+
+        <div class="output-card">
+            <h2>2. Nội Dung Được Tạo (Output)</h2>
+            <div id="result-area">Nội dung sẽ hiển thị ở đây.</div>
+            
+            <div class="evaluation-form" id="evaluation-section" style="display: none;">
+                <h3>3. Đánh giá Agent (Evaluation)</h3>
+                <form id="evaluation-form">
+                    <input type="hidden" id="content-id"> 
+                    
+                    <label for="rating">Đánh giá chung (1-5 sao):</label>
+                    <select id="rating" required>
+                        <option value="">-- Chọn --</option>
+                        <option value="5">5 sao - Rất Tốt</option>
+                        <option value="4">4 sao - Tốt</option>
+                        <option value="3">3 sao - Trung bình</option>
+                        <option value="2">2 sao - Kém</option>
+                        <option value="1">1 sao - Rất Kém</option>
+                    </select>
+
+                    <label for="feedback">Phản hồi/Yêu cầu Chỉnh sửa:</label>
+                    <textarea id="feedback" rows="3" placeholder="Nhập yêu cầu chi tiết để Agent học hỏi/chỉnh sửa..."></textarea>
+
+                    <button type="submit">Gửi Đánh Giá & Phản hồi ✨</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+    <script></script>
+</body>
+</html>
