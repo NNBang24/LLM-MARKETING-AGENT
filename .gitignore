@@ -1,0 +1,6 @@
+# Bỏ node_modules
+node_modules/
+
+# Bỏ tất cả file .env
+.env
+.env.*

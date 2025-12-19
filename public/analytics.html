@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch Sử & Thống Kê</title>
+
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        
+        .stats-card {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-card p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+    </style>
 </head>
+
 <body>
     <div class="navbar">
         <a href="index.html">Tạo Nội Dung</a>
@@ -14,60 +37,33 @@
 
     <h1>Lịch Sử Nội Dung & Phân Tích Đánh Giá</h1>
 
+    <div class="stats-card">
+        <h2>📊 Tổng quan Hiệu suất Agent</h2>
+        <p>Tổng số nội dung đã tạo: <span id="total-content">Đang tải...</span></p>
+        <p>Điểm đánh giá trung bình: <span id="average-rating">Đang tải...</span></p>
+    </div>
+
     <div class="table-card">
         <h2>Dữ liệu Đánh giá từ Marketer</h2>
         <table id="history-table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Sản phẩm</th>
-                    <th>Đối tượng</th>
-                    <th>Nội dung Tóm tắt</th>
                     <th>Rating</th>
                     <th>Feedback</th>
+                    <th>Đánh giá</th>
                     <th>Ngày tạo</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td colspan="7">Đang tải dữ liệu lịch sử...</td></tr>
+                <tr>
+                    <td colspan="8">Đang tải dữ liệu lịch sử...</td>
+                </tr>
             </tbody>
         </table>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', loadHistoryData);
-
-        async function loadHistoryData() {
-            const tableBody = document.querySelector('#history-table tbody');
-            tableBody.innerHTML = '<tr><td colspan="7">Đang tải dữ liệu lịch sử...</td></tr>';
-
-            try {
-                // Bạn cần thêm route này vào server.js để truy vấn MySQL
-                const response = await fetch('/api/history-data'); 
-                const data = await response.json();
-
-                tableBody.innerHTML = ''; // Xóa thông báo loading
-
-                if (data.success && data.history.length > 0) {
-                    data.history.forEach(item => {
-                        const productInfo = JSON.parse(item.product_info);
-                        const row = tableBody.insertRow();
-                        row.insertCell().textContent = item.id;
-                        row.insertCell().textContent = productInfo.product;
-                        row.insertCell().textContent = productInfo.audience;
-                        row.insertCell().textContent = item.content.substring(0, 50) + '...'; // Tóm tắt nội dung
-                        row.insertCell().textContent = item.rating ? item.rating + ' sao' : 'Chưa ĐG';
-                        row.insertCell().textContent = item.feedback || '-';
-                        row.insertCell().textContent = new Date(item.created_at).toLocaleDateString();
-                    });
-                } else {
-                    tableBody.innerHTML = '<tr><td colspan="7">Chưa có dữ liệu nào được tạo hoặc đánh giá.</td></tr>';
-                }
-            } catch (error) {
-                console.error('Lỗi khi tải lịch sử:', error);
-                tableBody.innerHTML = '<tr><td colspan="7">Lỗi kết nối server khi tải dữ liệu.</td></tr>';
-            }
-        }
-    </script>
+    <script src="js/analytics.js"></script>
 </body>
+
 </html>
