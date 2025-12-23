@@ -6,7 +6,7 @@ exports.getHistory = async (req, res) => {
       include: [
         {
           model: Evaluation,
-          as: 'Evaluations'   // phải trùng với alias trong associate
+          as: 'Evaluations'   
         }
       ],
       order: [['createdAt', 'DESC']]

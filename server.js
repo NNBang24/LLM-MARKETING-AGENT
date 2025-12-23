@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔴 DÒNG QUYẾT ĐỊNH
+
 app.use('/api', contentRoutes);
 app.use('/api', apiRouter);
 
